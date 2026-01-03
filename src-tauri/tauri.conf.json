@@ -1,0 +1,51 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "top-set-tool",
+  "version": "0.0.1",
+  "identifier": "com.top-set-tool.app",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "label":"main",
+        "title": "窗口置顶工具",
+        "width": 300,
+        "height": 300,
+        "visible": false,
+        "alwaysOnTop": true,
+        "decorations": false,
+        "transparent": true,
+        "resizable": false,
+        "maximizable": false
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "createUpdaterArtifacts": true
+  },
+  "plugins": {
+    "updater": {
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEY5OTExMzIxQTk2QUQyREYKUldUZjBtcXBJUk9SK1ZCb2QzeG5uTExPeGJodnhDcktHQ1U3VnZxaFFKMnFnSmt1SkNVUmVNUEcK",
+      "endpoints": [
+        "http://xxx/xxx/xxx.json"
+      ]
+    }
+  }
+}
