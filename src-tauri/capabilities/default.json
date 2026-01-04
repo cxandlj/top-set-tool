@@ -7,7 +7,6 @@
   ],
   "permissions": [
     "core:default",
-    "positioner:default",
     "dialog:default",
     "core:window:allow-start-dragging",
     {

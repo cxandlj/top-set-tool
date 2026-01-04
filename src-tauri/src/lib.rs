@@ -14,7 +14,7 @@ use tauri::{
     tray::{MouseButton, TrayIconBuilder, TrayIconEvent},
     Emitter, Manager,
 };
-use tauri_plugin_autostart::MacosLauncher;
+use tauri_plugin_autostart::{MacosLauncher, ManagerExt};
 use tauri_plugin_positioner::{Position, WindowExt};
 use windows::Win32::Foundation::HWND;
 
@@ -47,6 +47,11 @@ pub async fn run() {
                 let _ = app
                     .handle()
                     .plugin(tauri_plugin_updater::Builder::new().build());
+
+                // 获取自动启动管理器
+                let autostart_manager = app.autolaunch();
+                // 启用 autostart
+                let _ = autostart_manager.enable();
 
                 let main_window =
                     app_tool::get_window_by_label(app.handle(), constant::APP_MAIN_WINDOW_LABEL)?;
