@@ -58,6 +58,7 @@ import { ref, reactive, onMounted } from "vue";
 import { Setting, Sunrise, CloseBold, Close } from "@element-plus/icons-vue";
 import { APP_SETTING_WINDOW_LABEL } from "@/common/constant";
 import { invoke } from "@tauri-apps/api/core";
+import { ElMessage } from "element-plus";
 
 const settings = ref({
   auto_start: false,
@@ -74,9 +75,12 @@ const loadSavedSettings = () => {
 const saveSettings = () => {
   console.log(11, settings.value);
   invoke("save_app_setting", { settings: settings.value })
-    .then(() => {})
+    .then(() => {
+      ElMessage.success("设置保存成功");
+    })
     .catch((err) => {
       console.log("save app setting error", err);
+      ElMessage.error("设置保存失败：" + err);
     });
 };
 

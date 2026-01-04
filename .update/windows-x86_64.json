@@ -1,11 +1,19 @@
 {
   "version": "0.0.1",
-  "notes": "",
-  "pub_date": "2026-01-04T12:00:00Z",
+  "notes": "See the assets to download this version and install.",
+  "pub_date": "2026-01-04T23:48:37.976Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "",
-      "url": ""
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTcnRIT1B1V3pTU0JnMlUwa0d6WENPZDg0MlhqKzdicmMwL3ZJVDI5dzlBcTlCQU9YSU5CVk15SG15V2dSTHBTeVhxbUFOajJvaUI2OGZ0K0pKMzZYb0x1RWpGVVVyd2c0PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzY3NTcwNTE1CWZpbGU6dG9wLXNldC10b29sXzAuMC4xX3g2NF9lbi1VUy5tc2kKSFZGU2tuTGZ6d2R1SitLQWtQSmdhdnFhRitTcGJFdVdnVEVDVFZQZ0FRVnlzK2tnRVZWWSs2VjIvaVFiVUt3blJDeFplU1poYy9RbGRuaU9jdUlaRHc9PQo=",
+      "url": "https://github.com/cxandlj/top-set-tool/releases/download/app-v0.0.1/top-set-tool_0.0.1_x64_en-US.msi"
+    },
+    "windows-x86_64-msi": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTcnRIT1B1V3pTU0JnMlUwa0d6WENPZDg0MlhqKzdicmMwL3ZJVDI5dzlBcTlCQU9YSU5CVk15SG15V2dSTHBTeVhxbUFOajJvaUI2OGZ0K0pKMzZYb0x1RWpGVVVyd2c0PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzY3NTcwNTE1CWZpbGU6dG9wLXNldC10b29sXzAuMC4xX3g2NF9lbi1VUy5tc2kKSFZGU2tuTGZ6d2R1SitLQWtQSmdhdnFhRitTcGJFdVdnVEVDVFZQZ0FRVnlzK2tnRVZWWSs2VjIvaVFiVUt3blJDeFplU1poYy9RbGRuaU9jdUlaRHc9PQo=",
+      "url": "https://github.com/cxandlj/top-set-tool/releases/download/app-v0.0.1/top-set-tool_0.0.1_x64_en-US.msi"
+    },
+    "windows-x86_64-nsis": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTcnRIT1B1V3pTU1BaeGJvMTlzK3RaMjU3TVk3Tm5zNGxLTVN0M2w1OC9CRzVybjBncmN1amxOS3JtaXNsMVZvdU12WThwSThYNjduSWRGd0gyN2wzMVA1ejU2NDRPdXdnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzY3NTcwNTE1CWZpbGU6dG9wLXNldC10b29sXzAuMC4xX3g2NC1zZXR1cC5leGUKNlFXdVNwbFpwZ2VlTnozVnlIdXA4bDk3YjZ4ZW44ejEzYWRwV3dTa1hnTkxLa004ZWUxR1ArTEdGVHhLY3FaMzEzU3htbW8ySjVZditRTDdmdm5VQUE9PQo=",
+      "url": "https://github.com/cxandlj/top-set-tool/releases/download/app-v0.0.1/top-set-tool_0.0.1_x64-setup.exe"
     }
   }
 }
