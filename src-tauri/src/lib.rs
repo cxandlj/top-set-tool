@@ -1,4 +1,3 @@
-#![allow(dead_code)]
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 mod constant;
 mod controller;
@@ -13,17 +12,16 @@ use std::sync::Mutex;
 use tauri::{
     menu::{Menu, MenuItem},
     tray::{MouseButton, TrayIconBuilder, TrayIconEvent},
-    Emitter, Manager,
+    Manager,
 };
 use tauri_plugin_autostart::{MacosLauncher, ManagerExt};
-use tauri_plugin_positioner::{Position, WindowExt};
 use windows::Win32::Foundation::HWND;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub async fn run() {
     dotenv().ok();
 
-    let builder = tauri::Builder::default()
+    let _ = tauri::Builder::default()
         .plugin(tauri_plugin_positioner::init())
         .plugin(tauri_plugin_window_state::Builder::new().build())
         .plugin(tauri_plugin_autostart::init(

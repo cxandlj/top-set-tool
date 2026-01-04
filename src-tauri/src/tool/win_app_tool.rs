@@ -5,10 +5,9 @@ use serde::Serialize;
 #[cfg(target_os = "windows")]
 use std::mem::{size_of, zeroed};
 use std::path::PathBuf;
-use std::process::Command;
 use std::{ffi::OsStr, os::windows::ffi::OsStrExt, ptr::null_mut};
 use tauri::Manager;
-use windows::core::{w, Interface, PCWSTR, PWSTR};
+use windows::core::{Interface, PCWSTR, PWSTR};
 use windows::Win32::Foundation::{
     CloseHandle, BOOL, HWND, LPARAM, LRESULT, MAX_PATH, SIZE, WPARAM,
 };
