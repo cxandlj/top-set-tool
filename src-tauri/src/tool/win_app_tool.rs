@@ -1,3 +1,4 @@
+#![allow(dead_code)]
 use anyhow::Context;
 use base64::{engine::general_purpose, Engine};
 use serde::Serialize;

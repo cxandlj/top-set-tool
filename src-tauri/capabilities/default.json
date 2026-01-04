@@ -8,19 +8,6 @@
   "permissions": [
     "core:default",
     "dialog:default",
-    "core:window:allow-start-dragging",
-    {
-      "identifier": "http:default",
-      "allow": [
-        {
-          "url": "http://*"
-        }
-      ],
-      "deny": [
-        {
-          "url": "http://private.tauri.app"
-        }
-      ]
-    }
+    "core:window:allow-start-dragging"
   ]
 }
