@@ -42,9 +42,9 @@
   },
   "plugins": {
     "updater": {
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEY5OTExMzIxQTk2QUQyREYKUldUZjBtcXBJUk9SK1ZCb2QzeG5uTExPeGJodnhDcktHQ1U3VnZxaFFKMnFnSmt1SkNVUmVNUEcK",
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDZCM0MxMUQ2OUQyQzMwNUMKUldSY01DeWQxaEU4YTI2SE9pOE1ERithWG45RUVXam1BdVkxT2ltM0MyTHhMeVY2ZFNpNUx0Z2EK",
       "endpoints": [
-        "http://xxx/xxx/xxx.json"
+        "https://api.github.com/repos/cxandlj/top-set-tool/contents/.update/windows-x86_64.json"
       ]
     }
   }
