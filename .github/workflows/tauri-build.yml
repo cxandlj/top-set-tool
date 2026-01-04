@@ -6,8 +6,7 @@ on:
       - "v*"
   workflow_dispatch:
 env:
-  # Setting an environment variable with the value of a configuration variable
-  TAURI_SIGNING_PRIVATE_KEY: ${{ vars.TAURI_SIGNING_PRIVATE_KEY }}
+  TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
 
 jobs:
   build:
