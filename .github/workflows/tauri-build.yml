@@ -5,6 +5,9 @@ on:
     tags:
       - "v*"
   workflow_dispatch:
+env:
+  # Setting an environment variable with the value of a configuration variable
+  env_var: ${{ vars.TAURI_SIGNING_PRIVATE_KEY }}
 
 jobs:
   build:
@@ -44,11 +47,21 @@ jobs:
         with:
           targets: ${{ matrix.target }}
 
+      # - name: Cache cargo
+      #   uses: Swatinem/rust-cache@v2
+      #   with:
+      #     workspaces: |
+      #       src-tauri -> target
       - name: Cache cargo
-        uses: Swatinem/rust-cache@v2
+        uses: actions/cache@v4
         with:
-          workspaces: |
-            src-tauri -> target
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            src-tauri/target
+          key: windows-cargo-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            windows-cargo-
 
       # ---------- Linux deps ----------
       - name: Install Linux dependencies

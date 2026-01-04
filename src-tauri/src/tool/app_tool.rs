@@ -1,3 +1,4 @@
+#![allow(dead_code)]
 use anyhow::Context;
 use tauri::{AppHandle, Manager};
 use tauri::{Emitter, Monitor};
@@ -36,7 +37,7 @@ pub fn get_work_area_for_window(hwnd: HWND) -> RECT {
             ..Default::default()
         };
 
-        GetMonitorInfoW(monitor, &mut info);
+        let _ = GetMonitorInfoW(monitor, &mut info);
         info.rcWork
     }
 }
