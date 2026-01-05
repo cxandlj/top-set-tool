@@ -42,7 +42,7 @@ pub async fn run() {
     };
     builder
         .plugin(tauri_plugin_positioner::init())
-        .plugin(tauri_plugin_window_state::Builder::new().build())
+        // .plugin(tauri_plugin_window_state::Builder::new().build())
         .plugin(tauri_plugin_autostart::init(
             MacosLauncher::LaunchAgent,
             Some(vec!["--flag1", "--flag2"]),
@@ -156,7 +156,7 @@ pub async fn run() {
                                     app.restart();
                                 }
                                 "quit" => {
-                                    app.exit(0);
+                                    app_tool::close_all_and_exit(app);
                                 }
                                 _ => {}
                             }
@@ -215,7 +215,7 @@ pub async fn run() {
                         api.prevent_close();
                         let _ = window.hide();
                     }
-                    _ => (),
+                    _ => app_tool::close_all_and_exit(window.app_handle()),
                 }
             }
             _ => {}

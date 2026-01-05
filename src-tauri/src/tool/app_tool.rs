@@ -87,6 +87,7 @@ pub fn show_window(app: &AppHandle, config: WindowConfig) -> anyhow::Result<()> 
         let empty_menu = Menu::new(app)?;
         let window = tauri::WebviewWindowBuilder::from_config(app, &config)?
             .menu(empty_menu)
+            .inner_size(config.width, config.height)
             .build()?;
         if config.x.is_none() {
             window.move_window(Position::Center)?;
@@ -139,4 +140,14 @@ pub fn save_setting(app: &AppHandle, settings: &AppSettings) -> anyhow::Result<(
     serde_json::to_writer_pretty(file, settings)?;
 
     Ok(())
+}
+
+pub fn close_all_and_exit(app: &tauri::AppHandle) {
+    //关闭所有窗口
+    for (_, window) in app.webview_windows() {
+        let _ = window.close();
+    }
+
+    //退出应用（真正结束进程）
+    app.exit(0);
 }
