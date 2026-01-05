@@ -62,3 +62,14 @@ jobs:
           prerelease: false
           releaseCommitish: main
           args: ${{ matrix.args }}
+
+      - name: Generate updater json
+        run: |
+          cp src-tauri/target/release/bundle/updater/latest.json ./latest.json
+
+      - name: Deploy latest.json to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          publish_branch: gh-pages
