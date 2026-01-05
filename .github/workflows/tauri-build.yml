@@ -61,11 +61,13 @@ jobs:
           releaseDraft: false
           prerelease: false
           releaseCommitish: main
+          uploadUpdaterSignatures: false
           args: ${{ matrix.args }}
 
       - name: Generate updater json
         run: |
           ls src-tauri/target/release/bundle
+          ls src-tauri/target/release
           # cp src-tauri/target/release/bundle/updater/latest.json ./latest.json
 
       # - name: Deploy latest.json to gh-pages
