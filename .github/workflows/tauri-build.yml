@@ -51,7 +51,7 @@ jobs:
         # If you don't have `beforeBuildCommand` configured you may want to build your frontend here too.
         run: npm install # change this to npm or pnpm depending on which one you use.
 
-      - uses: tauri-apps/tauri-action@v1
+      - uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -64,11 +64,11 @@ jobs:
           releaseCommitish: main
           args: ${{ matrix.args }}
 
-      - name: Generate updater json
-        run: |
-          ls src-tauri/target/release/bundle
-          ls src-tauri/target/release
-          # cp src-tauri/target/release/bundle/updater/latest.json ./latest.json
+      # - name: Generate updater json
+      #   run: |
+      #     ls src-tauri/target/release/bundle
+      #     ls src-tauri/target/release
+      #     # cp src-tauri/target/release/bundle/updater/latest.json ./latest.json
 
       # - name: Deploy latest.json to gh-pages
       #   uses: peaceiris/actions-gh-pages@v4
