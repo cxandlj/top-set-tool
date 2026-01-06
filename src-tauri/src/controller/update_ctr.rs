@@ -30,7 +30,6 @@ pub async fn install_update(
     let Some(update) = pending_update.0.lock().unwrap().take() else {
         return Err(Error::NoPendingUpdate);
     };
-    println!("downloading update");
 
     let mut started = false;
 

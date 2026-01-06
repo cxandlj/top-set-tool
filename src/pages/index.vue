@@ -30,6 +30,10 @@ listen("sys_error", (event) => {
   });
 });
 const onEvent = new Channel();
+const updateSize = ref(0);
+const updateCurrentSize = ref(0);
+const updateProgress = ref(0);
+const updateDialogVisible = ref(false);
 const fetch_update = () => {
   invoke("fetch_update", {})
     .then((res) => {
@@ -39,7 +43,16 @@ const fetch_update = () => {
           cancelButtonText: "取消",
           type: "info",
         }).then(() => {
-          invoke("install_update", { onEvent: onEvent });
+          invoke("install_update", { onEvent: onEvent }).catch((e) => {
+            setTimeout(() => {
+              updateDialogVisible.value = false;
+            }, 500);
+            ElMessage({
+              showClose: true,
+              message: e,
+              type: "error",
+            });
+          });
         });
       }
     })
@@ -163,22 +176,20 @@ onMounted(() => {
 
   onEvent.onmessage = (message) => {
     if (message.event == "Started") {
-      that.updateSize = message.data.contentLength;
-      that.updateCurrentSize = 0;
-      that.updateProgress = 0;
-      that.updateDialogVisible = true;
+      updateSize.value = message.data.contentLength;
+      updateCurrentSize.value = 0;
+      updateProgress.value = 0;
+      updateDialogVisible.value = true;
     } else if (message.event == "Progress") {
-      that.updateCurrentSize += message.data.chunkLength;
-      that.updateProgress = Math.floor(
-        (that.updateCurrentSize / that.updateSize) * 100
+      updateCurrentSize.value += message.data.chunkLength;
+      updateProgress.value = Math.floor(
+        (updateCurrentSize.value / updateSize.value) * 100
       );
     } else if (message.event == "Finished") {
-      that.updateProgress = 100;
+      updateProgress.value = 100;
       setTimeout(() => {
-        that.updateDialogVisible = false;
+        updateDialogVisible.value = false;
       }, 500);
-    } else if (message.event == "sys_error") {
-      console.log("sys_error:", message.data);
     }
   };
 
@@ -337,6 +348,20 @@ onMounted(() => {
       </div>
     </div>
   </div>
+  <el-dialog
+    v-model="updateDialogVisible"
+    title="更新进度"
+    width="80%"
+    :show-close="false"
+    :close-on-click-modal="false"
+    class="update-dialog"
+  >
+    <el-progress
+      :text-inside="true"
+      :stroke-width="14"
+      :percentage="updateProgress"
+    />
+  </el-dialog>
 </template>
 
 <style scoped>
@@ -633,5 +658,39 @@ onMounted(() => {
 
 :deep(.el-scrollbar__thumb:hover) {
   background-color: rgba(255, 255, 255, 0.5);
+}
+
+.update-dialog {
+  padding: 10px !important;
+}
+
+/* 进度条自定义样式 */
+:deep(.el-progress-bar__outer) {
+  background-color: #f0f8ff;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+:deep(.el-progress-bar__inner) {
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  background: linear-gradient(90deg, #409eff, #79bbff);
+}
+</style>
+<style>
+.update-dialog {
+  padding: 8px;
+}
+/* 弹窗标题样式 */
+.update-dialog .el-dialog__header {
+  padding-bottom: 8px;
+}
+
+.update-dialog .el-dialog__title {
+  font-size: 16px;
+}
+
+.update-dialog .el-progress-bar__innerText {
+  font-size: 10px;
 }
 </style>
